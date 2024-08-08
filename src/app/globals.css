@@ -29,6 +29,7 @@ a {
 
 .dark {
     --bg: #0f172a;
+    --second-bg: white;
     --textColor: #ddd;
     --softBg: #1f273a;
     --softTextColor: #a6a6a6;
@@ -36,6 +37,7 @@ a {
 
 .light {
     --bg: white;
+    --second-bg: #0f172a;
     --textColor: black;
     --softBg: #f0f0f0;
     --softTextColor: #626262;
@@ -58,7 +60,7 @@ a {
 
 @media screen and (min-width:1536px) {
     .wrapper {
-        max-width: 100%;
+        max-width: 85%;
     }
 }
 
