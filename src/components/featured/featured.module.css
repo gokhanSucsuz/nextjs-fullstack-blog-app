@@ -3,7 +3,7 @@
 }
 
 .title {
-    font-size: 72px;
+    font-size: 96px;
     font-weight: 400;
 }
 
@@ -48,4 +48,36 @@
     width: max-content;
     background-color: var(--second-bg);
     color: var(--bg)
+}
+
+@media screen and (max-width:1200px) {
+    .title {
+        font-size: 72px;
+    }
+
+}
+
+@media screen and (max-width:1024px) {
+    .title {
+        font-size: 60px;
+    }
+
+    .imgContainer {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    .title {
+        font-size: 48px;
+    }
+
+}
+
+@media screen and (max-width:640px) {
+    .title {
+        font-size: 36px;
+    }
+
 }
