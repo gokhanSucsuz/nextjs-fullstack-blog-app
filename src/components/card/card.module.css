@@ -3,7 +3,7 @@
     display: flex;
     align-items: start;
     gap: 50px;
-    max-height: 350px;
+    height: 350px;
     justify-content: center;
 }
 
@@ -20,7 +20,7 @@
 
 .date {
     font-size: 12px;
-    color: rgb(238, 226, 226);
+    color: gray;
 }
 
 .detail {
@@ -67,9 +67,13 @@
     color: var(--bg)
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1280px) {
     .postTitle {
         font-size: 36px;
+    }
+
+    .imgContainer {
+        display: none;
     }
 
     .postDesc {
