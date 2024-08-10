@@ -38,23 +38,23 @@
 }
 
 .category.fashion {
-    background-color: cadetblue;
+    background-color: rgb(172, 228, 230);
 }
 
 .category.food {
-    background-color: rgb(150, 196, 112);
+    background-color: rgb(190, 238, 150);
 }
 
 .category.travel {
-    background-color: rgb(182, 125, 165);
+    background-color: rgb(252, 183, 231);
 }
 
 .category.culture {
-    background-color: rgb(113, 115, 187);
+    background-color: rgb(186, 188, 255);
 }
 
 .category.coding {
-    background-color: rgb(100, 53, 53);
+    background-color: rgb(248, 161, 161);
 }
 
 @media screen and (max-width:1280px) {

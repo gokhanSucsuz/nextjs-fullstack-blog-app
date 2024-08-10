@@ -1,0 +1,116 @@
+.post {
+    margin-top: 60px;
+    display: flex;
+    align-items: start;
+    gap: 50px;
+    max-height: 350px;
+    justify-content: center;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.imgContainer {
+    flex: 1;
+    height: 350px;
+    position: relative;
+}
+
+.date {
+    font-size: 12px;
+    color: rgb(238, 226, 226);
+}
+
+.detail {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 3px;
+}
+
+.category {
+    font-size: 12px;
+    color: crimson;
+}
+
+.txtContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 300px;
+    padding: 10px;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.postTitle {
+    font-size: 40px;
+}
+
+.postDesc {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--softTextColor);
+}
+
+.button {
+    padding: 10px 12px;
+    border: none;
+    border-radius: 5px;
+    width: max-content;
+    background-color: var(--second-bg);
+    color: var(--bg)
+}
+
+@media screen and (max-width:1200px) {
+    .postTitle {
+        font-size: 36px;
+    }
+
+    .postDesc {
+        font-size: 18px;
+    }
+
+}
+
+@media screen and (max-width:1024px) {
+    .postTitle {
+        font-size: 32px;
+    }
+
+    .postDesc {
+        font-size: 16px;
+    }
+
+    .imgContainer {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    .postTitle {
+        font-size: 28px;
+    }
+
+    .postDesc {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width:640px) {
+    .postTitle {
+        font-size: 24px;
+    }
+
+    .postDesc {
+        font-size: 12px;
+    }
+
+}
