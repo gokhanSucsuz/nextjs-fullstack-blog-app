@@ -34,23 +34,23 @@
 }
 
 .category.style {
-    background-color: bisque;
+    background-color: rgb(189, 162, 129);
 }
 
 .category.fashion {
-    background-color: rgb(172, 228, 230);
+    background-color: rgb(114, 188, 190);
 }
 
 .category.food {
-    background-color: rgb(190, 238, 150);
+    background-color: rgb(133, 177, 97);
 }
 
 .category.travel {
-    background-color: rgb(252, 183, 231);
+    background-color: rgb(219, 140, 196);
 }
 
 .category.culture {
-    background-color: rgb(186, 188, 255);
+    background-color: rgb(138, 141, 219);
 }
 
 .category.coding {
