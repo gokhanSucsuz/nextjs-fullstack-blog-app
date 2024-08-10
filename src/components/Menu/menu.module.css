@@ -4,6 +4,7 @@
 }
 
 .subTitle {
+    margin-top: 35px;
     font-size: 16px;
     color: gray;
 }
@@ -11,56 +12,5 @@
 .title {
     font-size: 36px;
     font-weight: bold;
-}
-
-.items {
-    margin-top: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.imgContainer {
-    flex: 1;
-    position: relative;
-    aspect-ratio: 1/1;
-}
-
-.image {
-    border-radius: 50%;
-    border: 3px solid lightgray;
-}
-
-.category {
-    font-size: 10px;
-    background-color: rgb(250, 76, 111);
-    color: white;
-    font-weight: bold;
-    width: fit-content;
-    padding: 5px 10px;
-    border-radius: 20px;
-}
-
-.txtContainer {
-    flex: 4;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.date {
-    font-size: 12px;
-}
-
-.desc {
-    color: var(--softTextColor);
+    margin-bottom: 20px;
 }
