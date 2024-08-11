@@ -7,10 +7,13 @@ import Card from '../card/Card'
 const CardList = () => {
     return (
         <div className={styles.container}>
-            <div className={styles.container}>
+            <div className={styles.containerCard}>
                 <Card />
             </div>
-            <Pagination />
+            <div className={styles.containerPagination}>
+                <Pagination />
+            </div>
+
         </div>
     )
 }

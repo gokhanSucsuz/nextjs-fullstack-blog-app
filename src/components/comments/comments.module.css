@@ -1,0 +1,87 @@
+.container {}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--softTextColor);
+}
+
+.comment {
+    width: 100%;
+    color: black;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: rgb(23, 150, 133);
+    color: white;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+.commentBlock {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.userImgContainer {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.userImage {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.userTextContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--softTextColor);
+}
+
+.username, .date {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.commentText {
+    padding: 20px 0;
+}
+
+.userComment {
+    margin-top: 10px;
+}
+
+.notAuth {
+    margin: 30px 0;
+    display: flex;
+    background-color: rgb(64, 127, 129);
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.notAuth:hover {
+    color: white;
+
+}

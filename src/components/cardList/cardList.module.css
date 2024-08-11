@@ -2,3 +2,21 @@
     flex: 5;
     margin-top: 30px;
 }
+
+@media screen and (max-width:640px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .containerPagination {
+        padding-top: 70px;
+    }
+
+    .containerCard {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
