@@ -12,7 +12,6 @@ const Featured = () => {
             <div className={styles.post}>
                 <div className={styles.imgContainer}>
                     <Image src="/p1.jpeg" alt='image' sizes="(max-width: 1024px) 0vw, (max-width: 1200px) 100vw,100vw"
-
                         fill className={styles.image} />
                 </div>
                 <div className={styles.txtContainer}>
