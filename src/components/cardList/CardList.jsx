@@ -13,14 +13,23 @@ const fetchData = async (page) => {
 };
 
 const CardList = async ({ page }) => {
-    const data = await fetchData(page)
+    const { posts, count } = await fetchData(page)
+
+    const POST_PER_PAGE = 2;
+
+    const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count
+    const hasPrev = POST_PER_PAGE * (page - 1) > 0
+
     return (
         <div className={styles.container}>
             <div className={styles.containerCard}>
-                <Card />
+                <h1 className={styles.title}>Recent Posts</h1>
+                {posts?.map(item =>
+                    <Card key={item.id} item={item} />
+                )}
             </div>
             <div className={styles.containerPagination}>
-                <Pagination />
+                <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} />
             </div>
 
         </div>

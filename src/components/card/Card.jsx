@@ -5,29 +5,29 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 
-const Card = () => {
+const Card = ({ key, item }) => {
 
     return (
         <>
-            <h1 className={styles.title}>Recent Posts</h1>
-            <div className={styles.post}>
+            <div className={styles.post} key={key}>
                 <div className={styles.imgContainer}>
                     <Image src="/p1.jpeg" alt='image' fill className={styles.image} />
                 </div>
                 <div className={styles.txtContainer}>
                     <div className={styles.detail}>
                         <span className={styles.date}>
-                            08.08.2024 -
+                            {item.createdAt.substring(0, 10)}
+
                         </span>
                         <span className={styles.category}>
-                            CULTURE
+                            {item.catSlug.toUpperCase()}
                         </span>
                     </div>
                     <Link href="/">
-                        <h1 className={styles.postTitle}>Lorem ipsum dolor sit amet.</h1>
+                        <h1 className={styles.postTitle}>{item.title}</h1>
                     </Link>
                     <p className={styles.postDesc}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat et cupiditate vel minima libero aspernatur ratione, nisi asperiores consectetur delectus?...
+                        {item.desc}
                     </p>
                     <Link href="/" className={styles.button}>Read More</Link>
                 </div>
