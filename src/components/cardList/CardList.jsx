@@ -4,16 +4,16 @@ import Pagination from '../pagination/Pagination'
 import Image from 'next/image'
 import Card from '../card/Card'
 
-const fetchData = async (page) => {
-    const res = await fetch('http://localhost:3000/api/posts?page=' + page, { cache: 'no-store' });
+const fetchData = async (page, cat) => {
+    const res = await fetch(`http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`, { cache: 'no-store' });
     if (!res.ok) {
         throw new Error('Failed to fetch');
     }
     return res.json();
 };
 
-const CardList = async ({ page }) => {
-    const { posts, count } = await fetchData(page)
+const CardList = async ({ page, cat }) => {
+    const { posts, count } = await fetchData(page, cat)
 
     const POST_PER_PAGE = 2;
 
@@ -31,7 +31,6 @@ const CardList = async ({ page }) => {
             <div className={styles.containerPagination}>
                 <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} />
             </div>
-
         </div>
     )
 }

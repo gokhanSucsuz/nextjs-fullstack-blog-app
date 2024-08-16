@@ -10,9 +10,10 @@ const Card = ({ key, item }) => {
     return (
         <>
             <div className={styles.post} key={key}>
-                <div className={styles.imgContainer}>
-                    <Image src="/p1.jpeg" alt='image' fill className={styles.image} />
-                </div>
+                {item.img && <div className={styles.imgContainer}>
+                    <Image src={item.img} alt='image' fill className={styles.image} />
+
+                </div>}
                 <div className={styles.txtContainer}>
                     <div className={styles.detail}>
                         <span className={styles.date}>
@@ -23,13 +24,13 @@ const Card = ({ key, item }) => {
                             {item.catSlug.toUpperCase()}
                         </span>
                     </div>
-                    <Link href="/">
+                    <Link href={`/posts/${item.slug}`}>
                         <h1 className={styles.postTitle}>{item.title}</h1>
                     </Link>
                     <p className={styles.postDesc}>
-                        {item.desc}
+                        {item.desc.substring(0, 60)}
                     </p>
-                    <Link href="/" className={styles.button}>Read More</Link>
+                    <Link href={`/posts/${item.slug}`} className={styles.button}>Read More</Link>
                 </div>
             </div>
         </>
