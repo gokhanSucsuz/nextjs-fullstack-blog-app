@@ -4,11 +4,28 @@ import styles from "./writePage.module.css"
 import Image from 'next/image'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+
 
 const WritePage = () => {
+    const { status } = useSession()
+
+    const [file, setFile] = useState("")
     const [open, setOpen] = useState(false)
     const [value, setValue] = useState("")
-    console.log(open)
+
+    const router = useRouter()
+
+    if (status === "loading") {
+        return <div className={styles.loading}>Loading...</div>
+    }
+
+    if (status === "unauthenticated") {
+        router.push("/")
+    }
+
+
     return (
         <div className={styles.container}>
             <input type="text" placeholder='Title' className={styles.input} />
@@ -16,9 +33,17 @@ const WritePage = () => {
                 <button className={styles.button} onClick={() => setOpen(!open)}>
                     <Image src="/plus.png" alt='plus' width={16} height={16} />
                 </button>
-                {open && <div className={styles.buttons} >
+                {open && <div className={styles.buttons}>
+                    <input
+                        type='file'
+                        id='image'
+                        onChange={(e) => setFile(e.target.files[0])}
+                        style={{ display: "none" }}
+                    />
                     <button className={styles.addButton}>
-                        <Image src="/image.png" alt='plus' width={16} height={16} />
+                        <label htmlFor="image">
+                            <Image src="/image.png" alt='plus' width={16} height={16} />
+                        </label>
                     </button>
                     <button className={styles.addButton}>
                         <Image src="/external.png" alt='plus' width={16} height={16} />

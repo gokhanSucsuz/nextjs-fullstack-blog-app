@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./comments.module.css"
 import Image from 'next/image'
 import Link from 'next/link'
@@ -19,18 +19,28 @@ const fetcher = async (url) => {
 
 const Comments = ({ postSlug }) => {
     const status = useSession()
+    console.log(status)
 
-    const { data, isLoading } = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}
+    const { data, mutate, isLoading } = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}
         
         `, fetcher)
+
+    const [desc, setDesc] = useState("")
+    const handleSubmit = async () => {
+        await fetch("/api/comments", {
+            method: "POST",
+            body: JSON.stringify({ desc, postSlug })
+        })
+        mutate()
+    }
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Comments</h1>
             {
-                status === "autenticated" ? (
+                status === "authenticated" ? (
                     <div className={styles.commentBlock}>
-                        <textarea name="txtComment" id="txtComment" className={styles.comment} placeholder='Write a comment...'></textarea>
-                        <button className={styles.button}>Send</button>
+                        <textarea onChange={(e) => setDesc(e.target.value)} name="txtComment" id="txtComment" className={styles.comment} placeholder='Write a comment...' />
+                        <button className={styles.button} onClick={handleSubmit}>Send</button>
                     </div>
                 ) : (
                     <Link className={styles.notAuth} href="/login">Login to write a comment...</Link>

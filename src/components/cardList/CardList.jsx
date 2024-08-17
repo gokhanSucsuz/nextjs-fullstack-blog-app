@@ -24,8 +24,10 @@ const CardList = async ({ page, cat }) => {
         <div className={styles.container}>
             <div className={styles.containerCard}>
                 <h1 className={styles.title}>Recent Posts</h1>
-                {posts?.map(item =>
-                    <Card key={item.id} item={item} />
+                {posts?.map((item, index) =>
+                    <div key={index}>
+                        <Card item={item} />
+                    </div>
                 )}
             </div>
             <div className={styles.containerPagination}>

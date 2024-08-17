@@ -10,10 +10,12 @@
     padding: 10px 25px;
     border-radius: 10px;
     font-size: 14px;
+
 }
 
 .categoryItem.style {
     background-color: rgb(189, 162, 129);
+
 }
 
 .categoryItem.fashion {
