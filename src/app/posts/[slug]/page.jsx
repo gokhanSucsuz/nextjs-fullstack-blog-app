@@ -4,43 +4,43 @@ import Menu from '@/components/Menu/Menu'
 import Image from 'next/image'
 import Comments from '@/components/comments/Comments'
 
-const SinglePage = () => {
+const fetchData = async (slug) => {
+    const res = await fetch(`http://localhost:3000/api/posts/${slug}`,
+        { cache: 'no-store' });
+    if (!res.ok) {
+        throw new Error('Failed to fetch');
+    }
+    return res.json();
+};
+
+const SinglePage = async ({ params }) => {
+    const { slug } = params;
+    const data = await fetchData(slug)
     return (
         <div className={styles.container}>
             <div className={styles.infoContainer}>
                 <div className={styles.txtContainer}>
-                    <h1 className={styles.title}>Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
+                    <h1 className={styles.title}>{data?.title}</h1>
                     <div className={styles.user}>
-                        <div className={styles.userImgContainer}>
-                            <Image src="/logo.png" alt='photo' className={styles.userImage} fill />
-                        </div>
+                        {data?.user.image &&
+                            <div className={styles.userImgContainer}>
+                                <Image src={data.user.image} alt='photo' className={styles.userImage} fill />
+                            </div>}
                         <div className={styles.userTextContainer}>
-                            <span className={styles.username}>Gökhan SUÇSUZ</span>
-                            <span className={styles.date}>11.08.2024</span>
+                            <span className={styles.username}>{data?.user.name}</span>
+                            <span className={styles.date}>{data?.user.createdAt.substring(0, 10)}</span>
                         </div>
                     </div>
                 </div>
-                <div className={styles.imgContainer}>
-                    <Image src="/p1.jpeg" alt='photo' className={styles.image} fill />
-                </div>
+                {data?.img && <div className={styles.imgContainer}>
+                    <Image src={data.img} alt='photo' className={styles.image} fill />
+                </div>}
             </div>
             <div className={styles.content}>
                 <div className={styles.post}>
-                    <div className={styles.desc}>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ea, ad sunt harum unde, quidem neque eius aliquid qui reiciendis voluptatum voluptates consequatur veritatis autem magnam iure facere quaerat hic! Veritatis nihil nobis ab impedit earum modi iure molestias temporibus voluptate, quas rem optio praesentium velit ipsam veniam, accusantium cum inventore saepe blanditiis sit. Velit ducimus perferendis nihil illo autem ea quo facere debitis alias dolorem, perspiciatis minima inventore repudiandae voluptate nulla delectus deleniti fugit blanditiis soluta quaerat nobis quis sed? Maiores eaque impedit hic molestiae repellendus eos, reiciendis officia corrupti odio, delectus, aut vel itaque non exercitationem aliquid? Animi.
-                        </p>
-                        <h2 className={styles.txtTitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ea, ad sunt harum unde, quidem neque eius aliquid qui reiciendis voluptatum voluptates consequatur veritatis autem magnam iure facere quaerat hic! Veritatis nihil nobis ab impedit earum modi iure molestias temporibus voluptate, quas rem optio praesentium velit ipsam veniam, accusantium cum inventore saepe blanditiis sit. Velit ducimus perferendis nihil illo autem ea quo facere debitis alias dolorem, perspiciatis minima inventore repudiandae voluptate nulla delectus deleniti fugit blanditiis soluta quaerat nobis quis sed? Maiores eaque impedit hic molestiae repellendus eos, reiciendis officia corrupti odio, delectus, aut vel itaque non exercitationem aliquid? Animi.
-                        </p>
-                        <h2 className={styles.txtTitle}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ea, ad sunt harum unde, quidem neque eius aliquid qui reiciendis voluptatum voluptates consequatur veritatis autem magnam iure facere quaerat hic! Veritatis nihil nobis ab impedit earum modi iure molestias temporibus voluptate, quas rem optio praesentium velit ipsam veniam, accusantium cum inventore saepe blanditiis sit. Velit ducimus perferendis nihil illo autem ea quo facere debitis alias dolorem, perspiciatis minima inventore repudiandae voluptate nulla delectus deleniti fugit blanditiis soluta quaerat nobis quis sed? Maiores eaque impedit hic molestiae repellendus eos, reiciendis officia corrupti odio, delectus, aut vel itaque non exercitationem aliquid? Animi.
-                        </p>
-                    </div>
+                    <div className={styles.desc} dangerouslySetInnerHTML={{ __html: data?.desc }} />
                     <div className={styles.comment}>
-                        <Comments />
+                        <Comments postSlug={slug} />
                     </div>
                 </div>
                 <Menu />

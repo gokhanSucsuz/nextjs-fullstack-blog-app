@@ -1,10 +1,28 @@
+"use client"
 import React from 'react'
 import styles from "./comments.module.css"
 import Image from 'next/image'
 import Link from 'next/link'
+import { NextResponse } from 'next/server'
+import { useSession } from 'next-auth/react'
+import useSWR from 'swr'
 
-const Comments = () => {
-    const status = "autenticated"
+const fetcher = async (url) => {
+    const res = await fetch(url)
+    const data = await res.json()
+    if (!res.ok) {
+        const error = new Error(data.message)
+        throw error
+    }
+    return data;
+}
+
+const Comments = ({ postSlug }) => {
+    const status = useSession()
+
+    const { data, isLoading } = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}
+        
+        `, fetcher)
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Comments</h1>
@@ -18,70 +36,24 @@ const Comments = () => {
                     <Link className={styles.notAuth} href="/login">Login to write a comment...</Link>
                 )
             }
-            <hr />
-            <div className={styles.userComment}>
-                <div className={styles.user}>
-                    <div className={styles.userImgContainer}>
-                        <Image src="/logo.png" alt='photo' className={styles.userImage} fill />
-                    </div>
-                    <div className={styles.userTextContainer}>
-                        <span className={styles.username}>Gökhan SUÇSUZ</span>
-                        <span className={styles.date}>11.08.2024</span>
-                    </div>
+            {isLoading ? "Loading..." : data?.map(item => {
+                return (
+                    <div key={item.id} className={styles.userComment}>
+                        <div className={styles.user}>
+                            {item?.user?.image && <div className={styles.userImgContainer}>
+                                <Image src={item.user.image} alt='photo' className={styles.userImage} fill />
+                            </div>}
+                            <div className={styles.userTextContainer}>
+                                <span className={styles.username}>{item.user.name}</span>
+                                <span className={styles.date}>{item?.createdAt.substring(0, 10)}</span>
+                            </div>
 
-                </div>
-                <div className={styles.commentText}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione, dignissimos.
-                </div>
-            </div>
-            <hr />
-            <div className={styles.userComment}>
-                <div className={styles.user}>
-                    <div className={styles.userImgContainer}>
-                        <Image src="/logo.png" alt='photo' className={styles.userImage} fill />
-                    </div>
-                    <div className={styles.userTextContainer}>
-                        <span className={styles.username}>Gökhan SUÇSUZ</span>
-                        <span className={styles.date}>11.08.2024</span>
-                    </div>
-
-                </div>
-                <div className={styles.commentText}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing.
-                </div>
-            </div>
-            <hr />
-            <div className={styles.userComment}>
-                <div className={styles.user}>
-                    <div className={styles.userImgContainer}>
-                        <Image src="/logo.png" alt='photo' className={styles.userImage} fill />
-                    </div>
-                    <div className={styles.userTextContainer}>
-                        <span className={styles.username}>Gökhan SUÇSUZ</span>
-                        <span className={styles.date}>11.08.2024</span>
-                    </div>
-
-                </div>
-                <div className={styles.commentText}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolor quos omnis deleniti obcaecati. Veritatis nesciunt at assumenda explicabo ut neque harum illo hic dolore adipisci numquam accusamus aliquam necessitatibus ratione, nostrum cumque voluptates voluptate dignissimos incidunt fugit itaque. Fuga officiis atque necessitatibus eos assumenda voluptatum suscipit sunt dolorum ab.
-                </div>
-            </div>
-            <hr />
-            <div className={styles.userComment}>
-                <div className={styles.user}>
-                    <div className={styles.userImgContainer}>
-                        <Image src="/logo.png" alt='photo' className={styles.userImage} fill />
-                    </div>
-                    <div className={styles.userTextContainer}>
-                        <span className={styles.username}>Gökhan SUÇSUZ</span>
-                        <span className={styles.date}>11.08.2024</span>
-                    </div>
-
-                </div>
-                <div className={styles.commentText}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam eveniet atque, dolorum fuga eligendi corporis ullam! Dicta.
-                </div>
-            </div>
+                        </div>
+                        <div className={styles.commentText}>
+                            {item?.desc}
+                        </div>
+                    </div>)
+            })}
         </div>
     )
 }
