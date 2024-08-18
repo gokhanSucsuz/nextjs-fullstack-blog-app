@@ -87,7 +87,6 @@ const WritePage = () => {
     return (
         <div className={styles.container}>
             <input type="text" placeholder='Title' className={styles.input} onChange={(e) => setTitle(e.target.value)} />
-            //TODO ADD CATEGORY
             <div className={styles.editor}>
                 <button className={styles.button} onClick={() => setOpen(!open)}>
                     <Image src="/plus.png" alt='plus' width={16} height={16} />
