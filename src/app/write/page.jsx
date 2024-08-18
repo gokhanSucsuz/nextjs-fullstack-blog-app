@@ -29,8 +29,9 @@ const WritePage = () => {
     if (status === "unauthenticated") {
         router.push("/")
     }
-    if (status === "authenticated") {
-        useEffect(() => {
+
+    useEffect(() => {
+        if (status === "authenticated") {
             const name = new Date().getTime + file.name
             const storageRef = ref(storage, name);
             const uploadTask = uploadBytesResumable(storageRef, file);
@@ -59,8 +60,9 @@ const WritePage = () => {
                 );
             }
             file && upload()
-        }, [file])
-    }
+        }
+    }, [file])
+
     const slugify = (str) => {
         str.toLowerCase()
             .trim()

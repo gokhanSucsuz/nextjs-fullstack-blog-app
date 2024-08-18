@@ -13,13 +13,14 @@ const LoginPage = () => {
             Loading...
         </div>)
     }
-    if (status === "authenticated") {
-        useEffect(() => {
-            if (status === "authenticated") {
+    
+    useEffect(() => {
+
+        if (status === "authenticated") {
                 router.push("/")
             }
         }, [status, router]);
-    }
+    
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
