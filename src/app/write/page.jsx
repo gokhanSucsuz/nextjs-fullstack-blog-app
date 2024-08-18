@@ -53,7 +53,7 @@ const WritePage = () => {
             }
             file && upload()
         }
-    }, [file])
+    }, [file, status])
 
     if (status === "loading") {
         return <div className={styles.loading}>Loading...</div>
@@ -92,7 +92,7 @@ const WritePage = () => {
                 <button className={styles.button} onClick={() => setOpen(!open)}>
                     <Image src="/plus.png" alt='plus' width={16} height={16} />
                 </button>
-                {open && <div className={styles.buttons}>
+                {open && (<div className={styles.buttons}>
                     <input
                         type='file'
                         id='image'
@@ -110,7 +110,7 @@ const WritePage = () => {
                     <button className={styles.addButton}>
                         <Image src="/video.png" alt='plus' width={16} height={16} />
                     </button>
-                </div>}
+                </div>)}
                 <ReactQuill
                     className={styles.textArea}
                     theme='bubble' value={value} onChange={setValue} placeholder='Tell your story...' />
