@@ -56,7 +56,7 @@ const WritePage = () => {
     }, [file, status])
 
     if (status === "loading") {
-        return <div className={styles.loading}>Loading...</div>
+        return (<div className={styles.loading}>Loading...</div>)
     }
 
     if (status === "unauthenticated") {
@@ -64,7 +64,7 @@ const WritePage = () => {
     }
 
     const slugify = (str) => {
-        str.toLowerCase()
+        return str.toLowerCase()
             .trim()
             .replace(/[^\w\s-]/g, "")
             .replace(/[\s_-]+/g, "-")
