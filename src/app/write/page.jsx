@@ -2,14 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./writePage.module.css";
 import Image from 'next/image';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.bubble.css';
+import dynamic from 'next/dynamic';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from '@/utils/firebase';
 
 const storage = getStorage(app);
+
+// Dynamically import ReactQuill to ensure it is only used on the client side
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const WritePage = () => {
     const { status } = useSession();
