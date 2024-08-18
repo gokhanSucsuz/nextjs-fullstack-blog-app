@@ -1,23 +1,23 @@
 "use client"
 import React, { useEffect } from 'react'
 import styles from "./loginPage.module.css"
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
 const LoginPage = () => {
-    const { data, status } = useSession()
+    const { status } = useSession()
     const router = useRouter()
 
     if (status === "loading") {
-        <div className={styles.loading}>
+        return (<div className={styles.loading}>
             Loading...
-        </div>
+        </div>)
     }
     useEffect(() => {
         if (status === "authenticated") {
             router.push("/")
         }
-    }, [status]);
+    }, [status, router]);
 
     return (
         <div className={styles.container}>
