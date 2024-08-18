@@ -29,13 +29,10 @@ const WritePage = () => {
     if (status === "unauthenticated") {
         router.push("/")
     }
-
     useEffect(() => {
         const name = new Date().getTime + file.name
         const storageRef = ref(storage, name);
-
         const uploadTask = uploadBytesResumable(storageRef, file);
-
         const upload = () => {
             uploadTask.on('state_changed',
                 (snapshot) => {
@@ -51,7 +48,7 @@ const WritePage = () => {
                     }
                 },
                 (error) => {
-                    // Handle unsuccessful uploads
+                    console.log(error)
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -60,7 +57,6 @@ const WritePage = () => {
                 }
             );
         }
-
         file && upload()
     }, [file])
 
