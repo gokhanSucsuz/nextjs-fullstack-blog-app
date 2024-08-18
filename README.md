@@ -3,6 +3,10 @@ Used Technologies: Nextjs, Firestore, MongoDb, SWR, Prisma...
 
 App's view => https://github.com/user-attachments/assets/e086da6b-1321-421e-bc2d-c038567fb90c
 
+![1](https://github.com/user-attachments/assets/36f3794f-75c6-437d-b47f-e3170c6488d0)
+![2](https://github.com/user-attachments/assets/b69a4edd-ca83-4df0-bd5d-e3c07c9ac920)
+![3](https://github.com/user-attachments/assets/09cb3b74-0d2a-4f39-a50b-8f4389e35352)
+![4](https://github.com/user-attachments/assets/69311154-a8a7-4502-a527-5b66e9f2bfad)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
