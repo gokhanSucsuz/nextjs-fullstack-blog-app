@@ -22,14 +22,6 @@ const WritePage = () => {
 
     const router = useRouter()
 
-    if (status === "loading") {
-        return <div className={styles.loading}>Loading...</div>
-    }
-
-    if (status === "unauthenticated") {
-        router.push("/")
-    }
-
     useEffect(() => {
         if (status === "authenticated") {
             const name = new Date().getTime + file.name
@@ -62,6 +54,14 @@ const WritePage = () => {
             file && upload()
         }
     }, [file])
+
+    if (status === "loading") {
+        return <div className={styles.loading}>Loading...</div>
+    }
+
+    if (status === "unauthenticated") {
+        router.push("/")
+    }
 
     const slugify = (str) => {
         str.toLowerCase()
