@@ -1,3 +1,9 @@
+
+Used Technologies: Nextjs, Firestore, MongoDb, SWR, Prisma...
+
+App's view => https://github.com/user-attachments/assets/e086da6b-1321-421e-bc2d-c038567fb90c
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
